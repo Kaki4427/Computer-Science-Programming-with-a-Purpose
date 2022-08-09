@@ -12,8 +12,8 @@ public class ThueMorse {
         String[][] pattern = new String[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (a[i] == a[j]) pattern[i][j] = "+ ";
-                else pattern[i][j] = "- ";
+                if (a[i] == a[j]) pattern[i][j] = "+  ";
+                else pattern[i][j] = "-  ";
                 System.out.print(pattern[i][j]);
             }
             System.out.println();

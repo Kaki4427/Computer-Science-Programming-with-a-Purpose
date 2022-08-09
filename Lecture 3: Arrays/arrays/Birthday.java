@@ -25,10 +25,12 @@ public class Birthday {
         int i = 0;
         sum[i] = counts[i];
         System.out.println(i+1 + "\t" + counts[i] + "\t" + (double) sum[i]/trials);
-        while  (sum[i] < trials/2) {
-            i++;
-            sum[i] = sum[i-1] + counts[i];
-            System.out.println(i+1 + "\t" + counts[i] + "\t" + (double) sum[i]/trials);
+        if (n>1) {
+            while ((double) sum[i] / trials < 0.5) {
+                i++;
+                sum[i] = sum[i - 1] + counts[i];
+                System.out.println(i + 1 + "\t" + counts[i] + "\t" + (double) sum[i] / trials);
+            }
         }
     }
 }
