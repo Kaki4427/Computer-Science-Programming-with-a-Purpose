@@ -4,9 +4,9 @@ public class Ramanujan {
     public static boolean isRamanujan(long n){
         int count = 0;
 
-        for (long i = 1; Math.pow(i, 3) < n/2; i++) {
-            for (long j = i+1; Math.pow(j, 3) < n; j++) {
-                if (Math.pow(i, 3)+Math.pow(j, 3) == n) count++;
+        for (long i = 1; (long) Math.pow(i, 3) < n/2; i++) {
+            for (long j = i+1; (long) Math.pow(j, 3) < n; j++) {
+                if ((long) Math.pow(i, 3) + (long) Math.pow(j, 3) == n) count++;
                 if (count > 1) return true;
             }
         }
