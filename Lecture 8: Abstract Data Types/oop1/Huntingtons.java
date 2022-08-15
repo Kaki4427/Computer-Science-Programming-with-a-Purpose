@@ -36,8 +36,9 @@ public class Huntingtons {
 
     // Sample client (see below).
     public static void main(String[] args) {
-        String file = args[0];
-        String dna = In(file).readAll();
+        String name = args[0];
+        In file = new In(name);
+        String dna = file.readAll();
         // String dna = StdIn.readAll();
         int max = maxRepeats(removeWhitespace(dna));
         StdOut.println("max repeats = "+ max);
