@@ -55,7 +55,7 @@ public class KernelFilter {
 
     // Returns a new picture that applies a Gaussian blur filter to the given picture.
     public static Picture gaussian(Picture picture) {
-        int[][] kernel = {{1, 2, 4}, {2, 4, 2}, {1, 2, 1}};
+        double[][] kernel = {{1.0/16.0, 2.0/16.0, 1.0/16.0}, {2.0/16.0, 4.0/16.0, 2.0/16.0}, {1.0/16.0, 2.0/16.0, 1.0/16.0}};
         int width = picture.width();
         int height = picture.height();
 
@@ -81,22 +81,22 @@ public class KernelFilter {
                 if (tc == width) tc = 0;
                 if (fr < 0) fr = height-1;
                 if (tr == height) tr = 0;
-                int red = kernel[0][0]*r[fc][fr] + kernel[1][0]*r[fc][row] + kernel[2][0]*r[fc][tr] +
+                double red = kernel[0][0]*r[fc][fr] + kernel[1][0]*r[fc][row] + kernel[2][0]*r[fc][tr] +
                         kernel[0][1]*r[col][fr] + kernel[1][1]*r[col][row] + kernel[2][1]*r[col][tr] +
                         kernel[0][2]*r[tc][fr] + kernel[1][2]*r[tc][row] + kernel[2][2]*r[tc][tr];
-                int green = kernel[0][0]*g[fc][fr] + kernel[1][0]*g[fc][row] + kernel[2][0]*g[fc][tr] +
+                double green = kernel[0][0]*g[fc][fr] + kernel[1][0]*g[fc][row] + kernel[2][0]*g[fc][tr] +
                         kernel[0][1]*g[col][fr] + kernel[1][1]*g[col][row] + kernel[2][1]*g[col][tr] +
                         kernel[0][2]*g[tc][fr] + kernel[1][2]*g[tc][row] + kernel[2][2]*g[tc][tr];
-                int blue = kernel[0][0]*b[fc][fr] + kernel[1][0]*b[fc][row] + kernel[2][0]*b[fc][tr] +
+                double blue = kernel[0][0]*b[fc][fr] + kernel[1][0]*b[fc][row] + kernel[2][0]*b[fc][tr] +
                         kernel[0][1]*b[col][fr] + kernel[1][1]*b[col][row] + kernel[2][1]*b[col][tr] +
                         kernel[0][2]*b[tc][fr] + kernel[1][2]*b[tc][row] + kernel[2][2]*b[tc][tr];
                 red = Math.max(0, red);
-                red = Math.min(255, (int) Math.round(1.0/16*red));
+                int R = Math.min(255, (int) Math.round(red));
                 green = Math.max(0, green);
-                green = Math.min(255, (int) Math.round(1.0/16*green));
+                int G = Math.min(255, (int) Math.round(green));
                 blue = Math.max(0, blue);
-                blue = Math.min(255, (int) Math.round(1.0/16*blue));
-                Color nc = new Color(red, green, blue);
+                int B = Math.min(255, (int) Math.round(blue));
+                Color nc = new Color(R, G, B);
                 target.set(col, row, nc);
             }
         }

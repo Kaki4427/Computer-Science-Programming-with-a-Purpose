@@ -4,12 +4,11 @@ public class Huntingtons {
     public static int maxRepeats(String dna) {
         int count = 0;
         int i = 0;
-        while (i < dna.length()-3) {
+        while (i+2 < dna.length()) {
             int recorder = 0;
             String codon = dna.substring(i, i+3);
             while (codon.equals("CAG")) {
                 recorder++;
-                StdOut.println(i);
                 count = Math.max(count, recorder);
                 i += 3;
                 if (i+2 < dna.length()) codon = dna.substring(i, i+3);
