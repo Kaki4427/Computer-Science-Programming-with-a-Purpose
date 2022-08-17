@@ -29,7 +29,7 @@ public class BarChartRacer {
             }
             Arrays.sort(bars);
             chart.setCaption(year);
-            for (int i = 0; i < k; i++) {
+            for (int i = bars.length - 1; i > bars.length - 1 - k; i--) {
                 chart.add(bars[i].getName(), bars[i].getValue(), bars[i].getCategory());
             }
             StdDraw.clear();

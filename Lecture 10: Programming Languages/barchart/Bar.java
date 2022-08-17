@@ -1,8 +1,8 @@
 import java.util.Arrays;
 
 public class Bar implements Comparable<Bar> {
-    public final String name, category;
-    public final int value;
+    private final String name, category;
+    private final int value;
     // Creates a new bar.
     public Bar(String name, int value, String category) {
         if (name == null || value < 0 || category == null) {
@@ -31,8 +31,8 @@ public class Bar implements Comparable<Bar> {
     // Compare two bars by value.
     public int compareTo(Bar that) {
         if (that == null) throw new NullPointerException("No argument!");
-        if (that.value < this.value) return -1;
-        else if (that.value == this.value) return 0;
+        if (this.value < that.value) return -1;
+        else if (this.value == that.value) return 0;
         else return 1;
     }
 
